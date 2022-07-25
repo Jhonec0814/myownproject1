@@ -15,7 +15,7 @@ const menuMobileItems = document.querySelector('#menu-mobile-items');
             item.addEventListener('click', e => {
                 e.preventDefault();
                 currentIndex = parseInt(item.getAttribute('data-id'));
-                const contentArr = document.querySelectorAll('#details-container .item');
+                let contentArr = document.querySelectorAll('#details-container .item');
                 
                 document.querySelectorAll('#details-container .item').forEach(item => { item.classList.add('item-hide');})
                 document.querySelectorAll('#details-container .item')[currentIndex].classList.toggle('item-hide');
@@ -43,6 +43,8 @@ const menuMobileItems = document.querySelector('#menu-mobile-items');
         });
 
         prevButton.addEventListener('click', e =>{
+            e.preventDefault()
+            console.log(currentIndex)
             if(currentIndex - 1 < 0){
                 return;
             }     
@@ -50,6 +52,7 @@ const menuMobileItems = document.querySelector('#menu-mobile-items');
             loadGalleryItem(currentIndex);
         });
         nextButton.addEventListener('click', e =>{
+            e.preventDefault()
             if(currentIndex + 1 == workItemsCount){
                 return;
             }     
